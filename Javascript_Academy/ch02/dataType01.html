@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자료형(Data Type)</title>
+</head>
+<body>
+    <h3>자바스크립트의 자료형(Data Type)</h3>
+    <p>
+        1. 기본형<br>
+        (1) 숫자형(number형) : 따옴표 없이 표기한 숫자(정수, 실수 구분하지 않음)<br>
+        (2) 문자형(String 형) : 값을 따옴표로 싸서 표기한 문자<br>
+        (3) 논리형 : 값을 true(참), false(거짓)로 표기하는 자료형<br>
+        (4) undefined형 : 선언하고 초기화되지 않은 자료형
+        2. 복합형<br>
+        (1) array형(배열) : 하나의 변수에 여러 개의 값을 저장하는 자료형<br>
+        (2) object형(객체) : 함수와 속성이 포함된 자료형<br>
+    </p>
+
+    <script>
+        // 1.자바스크립트에서는 변수를 선언하면 undefinded가 되고, 데이터를 삽입하면
+        // 그 때 타입이 결정된다.
+        // 2.undefined : 변수가 처음에 값을 할당하지 않은 상태.
+        // 3.null : 기존에 있는 값이 더이상 유효하지 않음을 의미.
+        // - 주로 초기화하는 용도로 사용한다.
+        // 4.typeof 연산자 : 변수의 타입을 확인할 때 사용.
+        var a = 10, b = 20, c, d;
+        console.log("데이터 타입 : "+typeof c);
+        c = a + b;
+        console.log("결과 : "+c);
+        console.log("데이터 타입 : "+typeof c);
+        //undefined
+        console.log("결과 : "+d);
+        // consol.log("데이터 타입 : "+typeof d);
+        //console은 에러를 잡을 때도 사용된다. 자바스크립트는 에러가 터져도 어떻게든 실행함.
+
+
+        d = null;
+        console.log("결과 : "+d);   //null
+        console.log("데이터 타입 : "+typeof d); // object(객체)
+
+        var s = "자바스크립트";
+        console.log("결과 : "+s);
+        console.log("데이터 타입 : "+typeof s);
+
+        var x = 20, y = 10;
+        z = x > y;
+        console.log("x > y : "+z);
+        console.log(typeof z);
+
+        //null 3개 차이점 : Java(), DB, Javascript
+        /*
+        자바
+        String s = null; String 참조변수 s 는 아무곳도 참조하지 않는다.
+        String s = "abc" -> ....s -> "abc"를 참조
+
+        oracle
+        null(비워둘 수 있다)과 not null(비워둘 수 없다)
+        
+        자바스크립트
+        var a = 10; a = null; null로 초기화하는 용도, 아무 값도 있지 않다. null을 객체 취급함.
+        */
+    </script>
+</body>
+</html>
