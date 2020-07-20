@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>switch문 연습</title>
+</head>
+<body>
+    <script>
+        var menu = parseInt(prompt('메뉴를 선택하시오.(1-4)',"0"));
+        switch(menu){
+            case 1 : document.write('짜장면'); break;
+            case 2 : document.write('짬뽕'); break;
+            case 3 : document.write('볶음밥'); break;
+            case 4 : document.write('탕수육'); break;
+            default : 
+            alert('메뉴가 없습니다.'); 
+            location.reload();
+        }
+    </script>
+</body>
+</html>

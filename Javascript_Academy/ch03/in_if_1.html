@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>if문 연습</title>
+</head>
+<body>
+    <script>
+        var id = "easy1004";
+        var pw = "112233";
+
+        var user_id = prompt('아이디는?',"");
+        
+        if(user_id == id){
+            var user_pw = prompt('비밀번호는?',"");
+            if(user_pw == pw){
+                alert(id+'님 로그인에 성공하셨습니다.')
+            }else{
+                alert(id+'님 비밀번호가 일치하지 않습니다.')
+                location.reload();
+            }
+        }else{
+            alert(id+'님 아이디가 일치하지 않습니다.');
+            location.reload();
+        }
+    </script>
+</body>
+</html>

@@ -22,11 +22,14 @@
         var changes = sumPrice - dayCost;
         var check = sumPrice > dayCost ? document.write(changes+"원 초과했어요."):document.write('돈 관리를 잘 했어요!');
 
-        if(sumPrice > dayCost){
-            document.write(changes+"원 초과했어요.")
-        } else{
-            document.write('돈 관리를 잘 했어요!');
-        }
+        // true : 0을 제외한 모든 숫자
+        // false : 숫자는 0,undefined,null
+
+        // if(sumPrice > dayCost){
+        //     document.write(changes+"원 초과했어요.")
+        // } else{
+        //     document.write('돈 관리를 잘 했어요!');
+        // }
     </script>
 </body>
 </html>
