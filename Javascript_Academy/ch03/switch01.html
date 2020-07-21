@@ -7,12 +7,19 @@
 </head>
 <body>
     <script>
+        //if문 vs switch~case문의 비교
+        // 1. switch문으로 만들 수 있는 것은 모두 if문으로 만들 수 있음
+        // 2. if문으로 만들 수 있는 것은 모두 switch문으로 만들 수는 없음
+        //    switch문의 조건은 제약이 있기 때문
+        // 3. switch문 정수, 문자열로 가지수 몇 가지로 딱 떨어지는 경우에 사용하면
+        //    if문보다 훨씬 더 간결하고 명확한 프로그래밍을 할 수 있음.
         var menu = parseInt(prompt('메뉴를 선택하시오.(1-4)',"0"));
+        // case 레이블에 정수만 적어야하기 때문에 정수만 적어야함, 최근에 문자열도 됨, 하지만 실수는 안됨
         switch(menu){
-            case 1 : document.write('짜장면'); break;
-            case 2 : document.write('짬뽕'); break;
-            case 3 : document.write('볶음밥'); break;
-            case 4 : document.write('탕수육'); break;
+            case 1 : document.write('짜장면<br>'); break;
+            case 2 : document.write('짬뽕<br>'); break;
+            case 3 : document.write('볶음밥<br>'); break;
+            case 4 : document.write('탕수육<br>'); break;
             default : 
             alert('메뉴가 없습니다.'); 
             location.reload();
