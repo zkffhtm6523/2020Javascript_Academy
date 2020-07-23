@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2차원 배열</title>
+    <!-- 1. 각 행별로(반별로) 총점과 평균을 구하여 출력하시오. -->
+</head>
+<body>
+    <script>
+        //1. 2차원 배열을 만드는 1번 방법
+        //https://developer.mozilla.org/ko/docs/Learn/JavaScript/First_steps
+        var score = [
+            [95,88,76,64,73], //1반
+            [78,63,57,92],    //2반
+            [77,82,67,63,81,82], //3반
+            //java하고 js는 콤마를 찍어도 괜찮음.
+        ];
+        //2. 2차원 배열을 만드는 2번 방법 - Array 객체
+        var score = new Array( 
+            Array(95,88,76,64,73),
+            Array(78,63,57,92),
+            Array(77,82,67,63,81,82),
+        )
+
+        // document.write(score+"<br>");
+        // document.write("score 갯수 : "+score.length+"<br>");
+        // document.write("score[0] 갯수 : "+score[0].length+"<br>");
+        // document.write("score[1] 갯수 : "+score[1].length+"<br>");
+        // document.write("score[2] 갯수 : "+score[2].length+"<br>");
+        var total = 0;
+        var avg = 0;
+        //1. for문
+        for(var i=0; i<score.length; i++){
+            for(var j=0; j<score[i].length; j++){
+                total += score[i][j];
+            }
+            avg = total / score[i].length;
+            document.write((i+1)+'반 총점 : '+total+"<br>");
+            document.write((i+1)+'반 평균 : '+avg.toFixed(2)+"<br>");
+            document.write("---------------------<br>")
+            total = 0;
+            avg = 0;
+        }
+        //2. for-in문
+        for (var i in score) {
+            for (var j in score[i]) {
+                total += score[i][j];
+            }
+                avg = total / score[i].length;
+                document.write((parseInt(i)+1)+'반('+score[i].length+'명) 총점 : '+total+"<br>");
+                document.write((parseInt(i)+1)+'반('+score[i].length+'명) 평균 : '+avg.toFixed(2)+"<br>");
+                document.write("---------------------<br>")
+                total = 0;
+                avg = 0;
+        }
+    </script>
+</body>
+</html>
