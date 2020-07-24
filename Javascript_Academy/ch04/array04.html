@@ -11,7 +11,7 @@
     3. table로 출력하시오.
      -->
     <style>
-        .container{width: 400px; margin: 0 auto;}
+        .container{width: 440px; margin: 0 auto;}
         table, th, td{
             border: 1px solid black;
         }
@@ -22,6 +22,7 @@
     </style>
 </head>
 <body>
+    <!-- 1번 방법 : 중간에 자릿수 늘려서 배열 추가 -->
     <div class="container">
     <table>
         <caption><h1>학생 정보</h1></caption>
@@ -40,6 +41,7 @@
             Array("채송화","물리",92,95),
             Array("안정원","전자",85,92),
             Array("김준완","기계",97,88),
+            Array("김준완","기계",97,88),
         )
         // 배열 4번 인덱스 -> 총점, 5번 인덱스 -> 평균 값 자동 추가
         for (var i = 0; i < student.length; i++) {
@@ -48,16 +50,15 @@
                 student[i][student[i].length-1] += student[i][j];
             }
             student[i][student[i].length] = student[i][student[i].length-1];
-            student[i][student[i].length-1] /= 2;
+            student[i][student[i].length-1] = (parseFloat(student[i][student[i].length-1]) / 2).toFixed(2);
         }
 
         // 테이블에 값 추가
         for(var i = 0; i < student.length ; i++){
             document.write("<tr>");
             for(var j = 0; j <= student[i].length-1;j++){
-                document.write("<th>"+student[i][j]+"</th>");
+                    document.write("<th>"+student[i][j]+"</th>");    
             }
-            document.write('<br>');
             document.write("</tr>");
         }
         //마지막행
@@ -65,6 +66,7 @@
         document.write("<th colspan = '2'>총합</th>");
         midtotal = 0;
         fintotal = 0;
+        
         //중간+기말 계산중
         for (var i = 0; i < student.length; i++) {
             for (var j = 2; j <= 4; j++) {
@@ -79,8 +81,43 @@
         document.write("<th>"+midtotal+"</th>");
         document.write("<th>"+fintotal+"</th>");
         document.write("<th>"+parseInt(fintotal+midtotal)+"</th>");
-        document.write("<th>"+(parseInt(fintotal+midtotal)/10)+"</th>");
+        document.write("<th>"+(parseFloat((fintotal+midtotal)/(student.length*2)).toFixed(2))+"</th>");
         document.write("</tr>");
+
+        /*
+        - 2번방법 : 배열 선언 시 자릿수 만들어주기
+        var student = new Array(
+        Array("이익준","컴공",88,76,0,0),
+        Array("양석형","수학",70,83,0,0),
+        Array("채송화","물리",92,95,0,0),
+        Array("안정원","전자",85,92,0,0),
+        Array("김준완","기계",97,88,0,0),
+        Array("김준완","기계",97,88,0,0),
+        )
+        
+       var result = new Array(0,0,0,0);//통계를 저장할 1차원 배열
+       document.write("<table>");
+       document.write("<tr><td>이름</td><td>전공</td><td>중간</td><td>기말</td><td>총점</td><td>평균</td></tr>")
+       for(var i = 0; i < student.length;i++){
+           for (var j = 0; j < student[i].length-2; j++) {
+                ducument.write("<td>"+student[i][j]+"</td>");
+                student[i][4] = student[i][2] + student[i][3];             
+           }
+           student[i][5] = student[i][4] / 2;
+           document.write("<td>"+student[i][4]+"</td>");
+           document.write("<td>"+student[i][5].toFixed(2)+"</td>");
+           document.write("</tr>");
+           resutl[0] += student[i][2];
+           resutl[1] += student[i][3];
+           resutl[2] += student[i][4];
+           resutl[3] += student[i][5];
+       }
+       document.write("<tr><td colspan = '2'>통계</td>");
+        for(var i = 0; i<result.length;i++){
+            document.write("<td>"+(result[i]/student.length).toFixed(2)+"</td>");
+        }
+       document.wirte("</tr></table>");
+       */
     </script>
     </table>
     </div>

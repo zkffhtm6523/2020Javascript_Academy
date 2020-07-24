@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>문자열 인덱스</title>
+    <style>
+        .container{width: 540px; margin: 50px auto;}
+        h2{text-align: center;}
+        label{width: 100px; display: inline-block; margin-left: 100px; margin-bottom: 20px;}
+        .btn {text-align: center;}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <fieldset>
+            <h2>2020년 1학기 성적 결과</h2>
+            <form method="post" name="input_form">
+                <label for="name">이름</label>
+                <input type="text" name="name"autofocus><br>
+                <label for="kor">국어 점수</label>
+                <input type="text" name="kor"><br>
+                <label for="math">수학 점수</label>
+                <input type="text" name="math"><br>
+                <label for="eng">영어 점수</label>
+                <input type="text" name="eng"><br>
+                <div class="btn">
+                    <button onclick="calc()">성적처리 결과</button>
+                </div>
+            </form>
+        </fieldset>
+        <script>
+            // 메소드 같은거
+          
+            function calc(){
+               var total = 0, avg = 0;
+               //name의 값이 문자열 인덱스로 저장됨
+               total = parseInt(input_form['kor'].value)+parseInt(input_form['eng'].value)+parseInt(input_form['math'].value);
+               
+               avg = total / 3;
+               alert(input_form['name'].value+" 학생의 총점은"+total+"이고, 평균은"+avg+"입니다.");
+            }
+        </script>
+    </div>
+</body>
+</html>
