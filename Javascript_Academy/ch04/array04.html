@@ -18,6 +18,7 @@
         table{border-collapse: collapse;}
         th{padding: 15px;}
         .th1{background-color: lightgray;}
+        .tr1{background: lightgray;}
     </style>
 </head>
 <body>
@@ -32,7 +33,6 @@
             <th>총점</th>
             <th>평균</th>
         </tr>
-        
     <script>
         var student = new Array(
             Array("이익준","컴공",88,76),
@@ -60,6 +60,27 @@
             document.write('<br>');
             document.write("</tr>");
         }
+        //마지막행
+        document.write("<tr class='tr1'>");
+        document.write("<th colspan = '2'>총합</th>");
+        midtotal = 0;
+        fintotal = 0;
+        //중간+기말 계산중
+        for (var i = 0; i < student.length; i++) {
+            for (var j = 2; j <= 4; j++) {
+                if(j == 2){
+                    midtotal += student[i][j];
+                }else if(j == 3){
+                    fintotal += student[i][j];
+                }
+            }
+        }
+        //출력
+        document.write("<th>"+midtotal+"</th>");
+        document.write("<th>"+fintotal+"</th>");
+        document.write("<th>"+parseInt(fintotal+midtotal)+"</th>");
+        document.write("<th>"+(parseInt(fintotal+midtotal)/10)+"</th>");
+        document.write("</tr>");
     </script>
     </table>
     </div>
