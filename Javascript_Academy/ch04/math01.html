@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>수학 객체</title>
+</head>
+<body>
+    <script>
+        //Math 객체 사용 방법
+        //1.abs() ; 절대값(양수)
+        document.write("절대값 : "+Math.abs(-10)+"<br>");
+        document.write("절대값 : "+Math.abs(10)+"<br>");
+
+        //2. max() : 나열된 값 중에서 최대값을 구함.
+        //문자열은 비교 불가, 숫자 문자열은 가능.
+        document.write("최대값 : "+Math.max(21,35,42.37,55,68,77,"135")+"<br>");
+
+        //3. min() : 나열된 값 중에서 최솟값을 구함.
+        //문자열은 비교 불가, 숫자 문자열은 가능.
+        document.write("최솟값 : "+Math.min(21,35,42.37,55,68,77,"135")+"<br>");
+
+        //4. pow() : a의 b승을 구함, a,b모두 정수 실수 가능
+        document.write("승수 : "+Math.pow(2,3)+"<br>");
+        document.write("승수 : "+Math.pow(3.3,5)+"<br>");
+        document.write("승수 : "+Math.pow(3.3,5.5)+"<br>");
+
+        //5. random() : 0~1 미만의 난수를 출력
+        document.write("난수 생성 : "+Math.random()+"<br>");
+        document.write("난수 생성 : "+parseInt(Math.random()*11)+"<br>"); //0~10사이의 난수
+
+        document.write("난수 생성 : "+parseInt(Math.random()*10)+1+"<br>"); //1~10사이의 난수
+        //-20 ~ 20
+        document.write("난수 생성 : "+parseInt(Math.random()*(20-(-20)+1))+(-20)+"<br>"); 
+
+        //6. round() : 반올림
+        // 소수점 첫 번째 자리에서 반올림하여 정수로 표현
+        document.write("반올림 : "+Math.round(337,557788)+"<br>");
+
+        //7. ceil() : 소수점 첫 번째 자리에서 무조건 올림하여 정수로 표현.
+        document.write("올림 : "+Math.ceil(337.257788)+"<br>");
+
+        //8. floor() : 소수점 첫 번째 자리에서 무조건 버림하여 정수로 표현.
+        document.write("내림 : "+Math.floor(337,957788)+"<br>");
+
+        //9. sqrt() : 루트값을 구해주는 함수
+        document.write("루트값 : "+Math.sqrt(9)+"<br>");
+
+        //10. PI() : 원주율 구하기
+        document.write("원주율 : "+Math.PI+"<br>");
+
+        //기타 등등
+        //메소드 : sin, cos, tan, log, exp ....
+        //상수 : E, LN2, LN10 ....
+    </script>
+</body>
+</html>
