@@ -49,6 +49,10 @@
         </div>
         <div class="day2">
             <ul>
+                <li class="item_title">1일</li>
+                <li class="item_date" id="date1" ></li>
+            </ul>
+            <ul>
                 <li class="item_title">100일</li>
                 <li class="item_date" id="date100" ></li>
             </ul>
@@ -80,15 +84,17 @@
             var anni = document.querySelector('#input').value;
             var start = new Date(anni); //기념일을 날짜로 변환
             var now = new Date(); //현재 날짜와 시간
+            //-----------------------------------------------
+            var year = start.getFullYear();
+            var month = start.getMonth() + 1;
+            var day = start.getDate();
+            document.querySelector("#date1").innerHTML = year + "년 " + month + "월 " + day + "일";
             
             var startTime = start.getTime();
-            var todatTime = now.getTime();
-            
-            var end = now.getTime(); //오늘의 밀리세컨드
-            var pass = todayTime - startTime;
-            var passday = Math.floor(pass/1000/60/60/24);
+            var todayTime = now.getTime(); //오늘의 밀리세컨드
+            var pass = todayTime - startTime; //오늘 - 기념일 -> 경과 시간의 밀리세컨드
+            var passDay = Math.floor(pass/(1000*60*60*24))
             document.querySelector('#passDay').innerHTML = passDay;
-            var pass = end - start; //오늘 - 기념일 -> 경과 시간의 밀리세컨드
             
             // 경과시간에 대한 확인
             // console.log(pass+" ms");
@@ -108,9 +114,8 @@
 
         function calcDay(days){
             //전달받은 일을 밀리세컨드로 바꿔야함, days(일)를 anni(밀리세컨드)로 변경
-            var days2 = days*24*60*60*1000; //일을 밀리세컨드로 변경
-            var passDay2 = start + days2;
-
+            var days2 = (days-1)*24*60*60*1000; //일을 밀리세컨드로 변경
+            var passDay2 = startTime + days2; // 기념일 - 경과일
             var someDate = new Date(passDay2);
             
             var year = someDate.getFullYear();
@@ -137,7 +142,7 @@
             document.querySelector('#date'+days).innerHTML = year+"년 "+month2+"월 "+day2+"일";
             }
         }        
-       
+        
     </script>
 </body>
 </html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //객체 생성자 함수
+        function Student(name, kor, eng, mat){
+            //프로퍼티(property)
+            this.name = name;
+            this.kor = kor;
+            this.eng = eng;
+            this.mat = mat;
+
+            //메소드(객체 안에 있는 것은 메소드)
+            this.sum = function(){
+                return (this.kor+this.eng+this.mat);
+            }
+
+            this.avg = this.sum() / 3;
+                // //메소드
+            this.showInfo = function(){
+                return "이름 : "+this.name + ", 총점 : "+this.sum()+"<br>평균 : "+this.avg+"<br>";
+            }
+        }
+
+        //객체 생성
+        // var s1 = new Student('이익준',92,93,93);
+
+        // document.write("이름 : "+s1.name+", 총점 : "+s1.sum()+"<br>평균 : "+s1.avg()+"<br>");
+
+        var students = [
+            new Student('이익준',92,93,93),
+            new Student('김준완',88,87,82),
+            new Student('양석형',73,79,85),
+            new Student('채송화',68,62,77),
+            new Student('안정원',78,88,98),
+        ];
+        
+
+        for (var i in students) {
+            document.write("이름 : "+students[i].name+" / ");
+            document.write("국어 : "+students[i].kor+" / ");
+            document.write("영어 : "+students[i].eng+" / ");
+            document.write("수학 : "+students[i].mat+"<br>");
+            document.write("-------------------------------<br>")
+            }
+        
+        for(var i = 0;i<students.length;i++){
+            document.write(students[i].showInfo());
+        }
+    </script>
+</body>
+</html>
