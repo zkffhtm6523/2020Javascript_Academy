@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>객체 활용 4</title>
+</head>
+<body>
+    <script>
+        //회원 객체 - 회원번호, 회원이름, 회원나이
+
+        //1. 싱글톤 객체 - 객체 1개
+        var memeber1 = 112233, name1 = '이익준', age1 = 40;
+         //이 방법보다는 아래의 싱글톤이 나은 방식이긴 함
+         //멤버의 객체를 각각 생성
+        var m1 = { no:112233, name:'이익준', age:40,};
+        var m2 = { no:445566, name:'김준완', age:42,};
+        var m3 = { no:987654, name:'채송화', age:39,};
+
+        // 사용
+        document.write("타입 : "+typeof(m1)+"<br>");
+        document.write("회원번호 : "+m1.no+", 이름 : "+m1.name+", 나이 : "+m1.age+"<br>");
+        document.write("회원번호 : "+m2.no+", 이름 : "+m2.name+", 나이 : "+m2.age+"<br>");
+        document.write("회원번호 : "+m3.no+", 이름 : "+m3.name+", 나이 : "+m3.age+"<br>");
+
+        //2. 객체 생성자 함수 - 다수의 객체를 생성
+        //객체 생성자 함수를 만들어, 이를 통해 객체를 생성
+        //이렇게 만들면 일반함수임. 일반함수는 리턴을 하던지 생성자 안에 출력을 해줘야함
+        //지역변수를 바로 출력하거나, 리턴값을 통해서 사용
+            // function Member(no, name, age){
+            //     var no1 = no;
+            //     var name1 = name;
+            //     var age1 = age;
+            // }
+        //생성자 만듬
+        //객체 생성자 함수는 반드시 this를 사용해야함
+        function Member(no, name, age){
+            this.no = no;
+            this.name = name;
+            this.age = age;
+        }
+
+        //객체 생성
+        var member1 = new Member(112233,'이익준',40);
+        var member2 = new Member(445566, '김준완', 42);
+        var member3 = new Member(987654, '채송화', 39);
+
+        var member = [
+            new Member(112233,'이익준',40),
+            new Member(445566, '김준완', 42),
+            new Member(987654, '채송화', 39),
+        ]
+        document.write("객체 타입 : "+typeof Member +"<br>");
+        document.write("객체 타입 : "+typeof member +"<br>");
+        document.write("객체 타입 : "+typeof member[0] +"<br>");
+
+
+        document.write('타입 : '+member1+"<br>");
+        document.write("회원번호 : "+member1.no+", 이름 : "+member1.name+", 나이 : "+member1.age+"<br>");
+        document.write("<hr>");
+        for (var i in member) {
+            document.write("회원번호 : "+member[i].no+", 이름 : "+member[i].name+", 나이 : "+member[i].age+"<br>")
+        }
+    </script>
+</body>
+</html>
