@@ -6,6 +6,13 @@
     <title></title>
     <style>
         .lbl:nth-child(2){margin-left: 10px;}
+        #seatsContainer{margin-top: 10px;}
+        button{margin: 3px; background-color: black; color: white;padding: 10px
+            ;border: 0px; width: 50px;}
+        button:not(:last-child){
+            background-color: purple ;
+        }
+        button:hover{background-color:darkgoldenrod }
     </style>
 </head>
 <body>
@@ -32,11 +39,46 @@
             return label_adult
         }
 
+        function makeSeatBtns(arr, colCnt){
+            var btn_div = document.createElement('div')
+            var div_col = new Array();
+            for (var i = 0; i < arr.length; i++) {
+                div_col[i] = document.createElement('div')
+                for (var j = 1; j < colCnt+1; j++) {
+                    var btn_row = document.createElement('button')
+                    btn_row.id = String(arr[i]+j)
+                    btn_row.innerHTML = arr[i]+''+j
+                    div_col[i].appendChild(btn_row)
+                    btn_div.appendChild(div_col[i])
+                }
+            }
+            // var divParent = document.createElement('div')
+            // arr.foreach(function(item){
+            //     var divChild = document.createElement('div')
+            //     for(var i=0;i<colCnt; i++){
+            //         var btn = document.createElement('button')
+            //         btn.innerText = `${item}${i}`
+            //         divChild.appendChild(btn)
+            //     }
+            //     divParent.appendChild(divChild)
+            // })
+            // return divParent
+            return btn_div
+        }
+
         function init(){
             var select_adult = makeSelect('성인','sel_adult_member_cnt')
             var select_teen = makeSelect('청소년','sel_teen_member_cnt')
             memberContainer.appendChild(select_adult)
             memberContainer.appendChild(select_teen)
+
+            var arr = ['A','B','C']
+            var seat_btns = makeSeatBtns(arr,5)
+            seatsContainer.appendChild(seat_btns)
+            seat_btns.addEventListener('click',function(){
+            var temp = button.id
+                alert(temp)
+            })
         }
         init()
     </script>
