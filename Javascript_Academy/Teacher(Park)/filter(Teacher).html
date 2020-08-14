@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filter</title>
+</head>
+<body>
+    <script>
+        Array.prototype.arr = []
+
+        var varDdd = function ddd(a){
+            return a % 5 == 0
+        }
+        //메소드 처럼 선언만 하면 조건식으로 쓸 수 있음. 타입은 boolean
+        function eee(a){
+            return a % 3 == 0
+        }
+        Array.prototype.filter2 = function(fn){
+            var result = []
+            for (var i = 0; i < this.arr.length; i++) {
+                var item = this.arr[i]
+                // 매개변수를 익명함수로 사용하는 방법
+                // if(fn(item)){
+                //     result.push(item)
+                // }
+                //함수로 선언된 것은 내부에 사용해야 됨
+                // if(eee(item)){
+                //     result.push(item)
+                // }
+                //매개변수를 못 받아서 값이 똑같음
+                if(varDdd){
+                    result.push(item)
+                }
+            }
+            return result
+        }
+        var myArr = Array()
+        myArr.arr = [3,5,9,10,23,12,22]
+        var myResult = myArr.filter2(function(param){
+            return param % 5 == 0
+        })
+        // var myResult = myArr.filter2(varDdd)
+
+        console.log(`myArr.arr = ${myArr.arr}`)
+        console.log(`myResult : ${myResult}`)
+    </script>
+</body>
+</html>

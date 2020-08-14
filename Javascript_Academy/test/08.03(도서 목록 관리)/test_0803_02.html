@@ -80,20 +80,6 @@
             cursor: pointer;
         }
     </style>
-    <!-- 
-        1. 이벤트 - 웹브라우저에서 HTML 문서와 사용자 사이에 상호작용에 의해서 발생하는 일
-        이벤트가 발생하면 웹브라우저는 이 사실을 자바스크립트에게 알려주어서 
-        이벤트에 대한 적절한 처리를 할 수 있게 한다
-        - 마우스 : click, dbclick(더블클릭), mouseover, mouseout, mousemove, mousedown, mouseup
-        - 키보드 : keypress, keyup, keydown
-        - 폼 : change, focus, blur, select
-        - 윈도우 : load, unload, resize 
-        2. 이벤트리스너 - 이벤트가 발생했을 때 실행되는 함수
-        
-        3. form 태그 : 기본적으로 form안의 내용을 가지고 페이지로 이동하려는 기본 특성을 가짐
-        이러한 폼의 기본 특성을 막고, 사용자가 의도한 대로 사용하려면, event.preventDefault()를 사용하여
-        기본 특성을 막는다.
-     -->
 </head>
 <body>
     <div class="container">
@@ -119,14 +105,6 @@
         Book.prototype.showInfo = function() {
             return "제목 : " + this.title + "\n저자 : " + this.author + "\n페이지 : " + this.volume + "\n가격 : " + this.price;
         }
-
-        // var itemList = [
-        //     new Book("레미제라블", "빅토르위고", 950, 23000),
-        //     new Book("죄와벌", "도스토예프스키", 1025, 21000),
-        //     new Book("전쟁과 평화", "톨스토이", 875, 18500),
-        //     new Book("오만과 편견", "제인 오스틴", 770, 15000),
-        //     new Book("폭풍의 언덕", "에밀리 브론테", 820, 15500),
-        // ]
         var itemList = []; // 책 정보를 받기 위한 빈 배열
 
 
@@ -169,13 +147,10 @@
 
             // item에 대한 배열
             var bookList = document.querySelectorAll(".bookInfo"); // 클래스가 close인 얘들이 배열에 하나씩 저장됨
-
             for(var i = 0; i < bookList.length; i++) {
                 bookList[i].addEventListener("click", showBookInfo);
             }
-
             var bookList = document.querySelectorAll(".close"); // 클래스가 close인 얘들이 배열에 하나씩 저장됨
-
             for(var i = 0; i < bookList.length; i++) {
                 bookList[i].addEventListener("click", removeItem);
             }

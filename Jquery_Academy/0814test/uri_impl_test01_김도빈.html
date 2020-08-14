@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1번 문제</title>
+    <style>
+        .container{
+            width: 650px; margin: 30px 0 auto; margin-bottom: 30px;
+        }
+        .container2{
+            background-color: purple;
+            padding: 20px;
+            text-align: center;
+        }
+        h2{text-align: center;}
+        input{padding: 8px;}
+        button{padding: 8px;}
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        ul li {
+            background-color: #eee;
+            font-size: 1.2em;
+            padding: 10px 10px 10px 40px;
+            position: relative;
+        }
+        ul li:nth-child(odd) {
+            background-color: #ddd;
+        } 
+        ul li:hover {
+            background-color: lemonchiffon;
+            color: brown;
+        }
+        .movieInfo{
+            background-color: yellow;
+            padding: 3px 12px 6px 14px;
+            font-size: 1.2em;
+            color: gray;
+            position: absolute;
+            right: 34px;
+            top: 0;
+            cursor: pointer;
+        }
+        .close {
+            background-color: pink;
+            padding: 3px 12px 6px 12px;
+            font-size: 1.4em;
+            color: red;
+            position: absolute;
+            right: 0;
+            top: 0;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>영화 관람 리스트</h2>
+        <div class="container2">
+            <form>
+                <input type="text" id="title" autofocus placeholder="영화명">
+                <input type="date" id="date">
+                <input type="text" id="theater" placeholder="극장명">
+                <button id="add" class="addBtn">추가</button>
+            </form>
+        </div>
+        <div id="itemList"></div>
+    </div>
+    
+    <script>
+        function Movie(title, date, theater) {
+            this.title = title;
+            this.date = date;
+            this.theater = theater;
+        }
+    
+        Movie.prototype.showInfo = function() {
+            return "제목 : " + this.title + "\n관람일시 : " + this.date + "\n극장명 : " + this.theater;
+        }
+    
+        var itemList = [];
+        var btn = document.querySelector("#add");
+        btn.addEventListener("click", addList); 
+        
+        function addList() {
+            var title = document.querySelector("#title").value;
+            var date = document.querySelector("#date").value;
+            var theater = document.querySelector("#theater").value;
+            if(title == 0) {
+                alert('영화명을 입력해주세요.');
+            }else if(date == 0) {
+                alert('날짜를 입력해주세요.');
+            }else if(theater == 0) {
+                alert('극장명을 입력해주세요.');
+            }else {
+                itemList.push(new Movie(title, date, theater));
+                document.querySelector("#title").value = "";
+                document.querySelector("#date").value = "";
+                document.querySelector("#theater").value = "";
+                document.querySelector("#title").focus();
+                event.preventDefault();
+                showList();
+            }
+        }
+    
+    
+        function showList() {
+            event.preventDefault();
+            var list = "<ul>";
+            for(var i = 0; i < itemList.length; i++) {
+                list += "<li>" + itemList[i].title + "<span class='movieInfo' id="+ i +">영화정보</span>" +"<span class='close' id="+ i +">x</span>" + "</li>"
+            }
+    
+            list += "</ul>";
+    
+            document.querySelector("#itemList").innerHTML = list;
+    
+            var MovieList = document.querySelectorAll(".movieInfo");
+    
+            for(var i = 0; i < itemList.length; i++) {
+                MovieList[i].addEventListener("click", showMovieInfo);
+            }
+    
+            var MovieList = document.querySelectorAll(".close");
+    
+            for(var i = 0; i < itemList.length; i++) {
+                MovieList[i].addEventListener("click", remove);
+            }
+        }
+    
+        function remove() {
+            var id = this.getAttribute("id");
+            itemList.splice(id, 1);
+            showList(); 
+        }
+    
+        function showMovieInfo() {
+            var id = this.getAttribute("id");
+            alert(itemList[id].showInfo());
+        }
+    </script>
+</body>
+</html>
