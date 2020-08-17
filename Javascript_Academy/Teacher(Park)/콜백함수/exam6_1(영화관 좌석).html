@@ -30,11 +30,13 @@
         function toggleSeat(seat,tempId){
             var idx = selectedSeats.indexOf(seat) //없으면 -1리턴
             var arrLength = parseInt(sel_adult_member_cnt.value)+parseInt(sel_teen_member_cnt.value)
+            // var btn = document.querySelector('#'+seat); //아이디 받아오기
             if(idx == -1){ //기존에 선택이 안 되어 있었다.
                 if(arrLength != 0){
                     if(selectedSeats.length >= arrLength){
                         alert('가득찼음')
                     }else{
+                        // btn.classList.add('selected')
                         selectedSeats.push(seat) //배열에 추가
                         tempId.style.backgroundColor = 'green'
                     }
@@ -42,6 +44,7 @@
                     alert('0명 선택되었음~')
                 }
             }else{ //기존에 선택이 되어 있었다.
+                // btn.classList.remove('selected')
                 selectedSeats.splice(idx, 1)
                 tempId.style.backgroundColor = 'purple'
             }
@@ -96,6 +99,7 @@
             arr.forEach(function(item){
                 var divChild = document.createElement('div')
                 for(var i=1;i<=colCnt; i++){
+                    //var로 하면 문제터짐. for문 끝나도 살아있음. for문의 마지막 값이 있음
                     let txt = `${item}${i}`
                     
                     var btn = document.createElement('button')
@@ -105,6 +109,8 @@
                     // btn.setAttribute('onclick',`toggleSeat('${txt}')`)
                     btn.addEventListener('click',function(){
                         let tempId = document.getElementById(`${this.id}`)
+                        //toggleSeat 매개변수가 없을 때는 익명함수 안쓰고 함수명만
+                        //매개변수가 있을 때는 이 방식으로 사용해야함.
                         toggleSeat(txt,tempId)
                         
                     })
