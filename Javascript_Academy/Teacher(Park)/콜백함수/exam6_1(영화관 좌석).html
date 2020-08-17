@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
     <style>
+        body{text-align: center;}
+        div{text-align: center;}
         .lbl:nth-child(2){margin-left: 10px;}
         #seatsContainer{margin-top: 10px;}
         button{margin: 3px; background-color: purple; color: white;padding: 10px
@@ -13,21 +15,21 @@
             background-color: black;
         } */
         button:hover{background-color:darkgoldenrod }
+        span{margin-right: 10px;}
     </style>
 </head>
 <body>
     <input type="hidden3" id="allSeatCnt">
     <div id="memberContainer"></div>
     <div id="seatsContainer"></div>
+    
     <script>
         //무엇을 선택했는지 값 저장용
         var selectedSeats = []
 
-        function switchSeat(seat,tempId){
+        function toggleSeat(seat,tempId){
             var idx = selectedSeats.indexOf(seat) //없으면 -1리턴
             var arrLength = parseInt(sel_adult_member_cnt.value)+parseInt(sel_teen_member_cnt.value)
-            console.log(`selectedSeats.length : ${selectedSeats.length}`)
-            console.log(`arrLength : ${arrLength}`)
             if(idx == -1){ //기존에 선택이 안 되어 있었다.
                 if(arrLength != 0){
                     if(selectedSeats.length >= arrLength){
@@ -94,19 +96,24 @@
             arr.forEach(function(item){
                 var divChild = document.createElement('div')
                 for(var i=1;i<=colCnt; i++){
+                    let txt = `${item}${i}`
+                    
                     var btn = document.createElement('button')
                     btn.setAttribute('class','btn')
                     btn.setAttribute('id',`${item}${i}`)
-
-                    let txt = `${item}${i}`
-                    // btn.setAttribute('onclick',`switchSeat('${txt}')`)
+                    
+                    // btn.setAttribute('onclick',`toggleSeat('${txt}')`)
                     btn.addEventListener('click',function(){
                         let tempId = document.getElementById(`${this.id}`)
-                        switchSeat(txt,tempId)
+                        toggleSeat(txt,tempId)
                         
                     })
                     btn.innerText = txt
                     divChild.appendChild(btn)
+                    if(i % 3 == 0){
+                        var sp = document.createElement('span')
+                        divChild.appendChild(sp)
+                    }
                 }
                 divParent.appendChild(divChild)
             })
@@ -119,8 +126,8 @@
             memberContainer.appendChild(select_adult)
             memberContainer.appendChild(select_teen)
 
-            var arr = ['A','B','C']
-            var seat_btns = makeSeatBtns(arr,5)
+            var arr = ['A','B','C','D','E','F','G']
+            var seat_btns = makeSeatBtns(arr,12)
             seatsContainer.appendChild(seat_btns)
             // seat_btns.addEventListener('click',function(){
             //     var temp = button.id
